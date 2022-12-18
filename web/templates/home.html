@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+    <head>
+
+        <!-- Meta Data -->
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="author" content="Furkan Erdi">
+        <meta name="Github Profile" content="https://github.com/helizac" >
+
+        <!-- Title -->
+        <title>Jump Point Search Project</title>
+
+        <!-- Links -->
+        <link rel="stylesheet" href="../static/css/style.css"/>
+
+        <!-- Script Field -->
+        <script type="text/javascript" src="../static/js/grid.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.6.4/lottie_svg.min.js"></script>
+        <script src="../static/vendor/lottie/lottie.min.js"></script>
+        <script>
+            let new_array = JSON.parse('{{ grid }}');
+            updateGrid(new_array);
+        </script>
+    </head>
+    <body>
+        
+        <div class="container">
+
+            <div class="content" style="z-index: 5;">
+
+                <h1>Jump Point Search - Python Implementation</h4>
+
+                <p>JPS can be described in terms of two simple pruning rules which are applied recursively during search: one rule is specific to straight steps,
+                    the other for diagonal steps. The key intuition in both cases is to prune the set of immediate neighbours around a node by trying to prove that
+                    an optimal path (symmetric or otherwise) exists from the parent of the current node to each neighbour and that path does not involve visiting the
+                    current node. Figure 1 outlines the basic idea.</p>
+            </div>
+
+            <div class="grid-area" style="z-index: 5;">
+                <script>createGrid();</script>
+                <form method="">
+                    <button type="submit" name="reset" id="reset" onclick="window.location.reload();" value="True">Reset</button>
+                    <button type="button" id="grid-button" onclick="sendgridArray(); setTimeout(location.reload.bind(location), 250);">Find Route</button>
+                </form>
+            </div>
+
+            <div style="height: 120%; width: 120%; position: absolute; bottom: 0; opacity: .2; z-index: 3;">
+                <div class="lottie" lottie="loop" lottie-path="/static/lottie/paper.json" lottie-speed=".5" style="width: 100%; height: 100%; overflow: hidden;"></div>
+            </div>
+
+        </div>
+
+        <!-- Script Field -->
+        <script>setGrid();</script>
+        <script>
+            function sendgridArray(){
+                const request = new XMLHttpRequest();
+                request.open("POST", `/ProcessInfo/${JSON.stringify(returnGridArray())}`);
+                request.send();
+            }
+        </script>
+        <script type="text/javascript" src="/static/js/lottie.js"></script>
+    </body>
+</html>
