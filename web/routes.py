@@ -26,31 +26,31 @@ def process(grid):
 
     x_field = grid
     for i in range(len(x_field)):
-        x_field[i].insert(0, -10)
-        x_field[i].append(-10)
-    x_field.insert(0, [-10, -10, -10, -10, -10, -10, -10, -10, -10, -10, -10, -10, -10, -10, -10, -10, -10, -10, -10, -10, -10, -10, -10, -10, -10, -10])
-    x_field.append([-10, -10, -10, -10, -10, -10, -10, -10, -10, -10, -10, -10, -10, -10, -10, -10, -10, -10, -10, -10, -10, -10, -10, -10, -10, -10])
+        x_field[i].insert(0, BLOCK)
+        x_field[i].append(BLOCK)
+    x_field.insert(0, [BLOCK for x in range(26)])
+    x_field.append([BLOCK for x in range(26)])
     
     field = x_field
-    field[1][1] = UNINITIALIZED  # guarantee that the end is reachable
-    field[11][23] = UNINITIALIZED
 
     try:
-        drawGrid(field)
-    except ImportError as err:
-        print("You don't have pygame. Cannot display large test. ", err)
+        showField(field)
+    except Exception as e:
+        print(e)
         
-    path = jump_point_search(field, 3, 3, 9, 21)
+    path = jump_point_search(field, 3, 3, 22, 10)
     path = get_full_path(path)
 
+    del path[0]
+    del path[-1]
     for i in range(len(path)):
-        x_field[path[i][0]][path[i][1]] = -5
+        x_field[path[i][0]][path[i][1]] = 3
 
-    del x_field[len(x_field)-1]
+    del x_field[-1]
     del x_field[0]
 
     for i in range(len(x_field)):
-        del x_field[i][len(x_field[i])-1]
+        del x_field[i][-1]
         del x_field[i][0]
 
     session["grid"] = x_field

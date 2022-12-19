@@ -2,14 +2,18 @@ import itertools, heapq
 
 # c2huc2hu / jps
 # Define some constants representing the things that can be in a field.
-OBSTACLE = -10
-DESTINATION = -2
-UNINITIALIZED = -1
+
+BLANK = 0
+START = 1
+END = 2
+PATH = 3
+
+BLOCK = 8
 
 DEBUG = False  
 VISUAL = True
-expanded = [[False for j in range(15)] for i in range(20)]  
-visited = [[False for j in range(15)] for i in range(20)]
+expanded = [[False for j in range(24)] for i in range(12)]  
+visited = [[False for j in range(24)] for i in range(12)]
 
 class HeapTree():
     def __init__(self):
@@ -32,37 +36,7 @@ class HeapTree():
     def empty(self):
         return len(self.pq) == 0
 
-def generate_field(terrain, walkable_fcn, pad=False) -> list[list[int]]:
-    """
-    Generate a field from any format as long as a function is provided to determine whether a cell is walkable. 
-
-    :param terrain: a 2d rectangular iterable somehow representing the terrain.
-    param walkable_fcn : a function that takes a a cell from terrain as an argument and returns whether that cell can be walked on.
-    param pad : if true, this function sets the outermost layer of the map to obstacles. if not, the function does nothing.
-    
-    Returns: the field
-    """
-    field = [[UNINITIALIZED if walkable_fcn(j) else OBSTACLE for j in i] for i in terrain]
-    if pad:
-        pad_field(field)
-    return field 
-        
-def pad_field(field):
-    """
-    Fill the outer border of a field with obstacles
-    Parameters
-    field - a 2d rectangular array with obstacles.
-    Returns:
-    None
-    """
-    for i in range(len(field)):
-        field[i][0] = OBSTACLE
-        field[i][-1] = OBSTACLE
-    for j in range(len(field[0])):
-        field[0][j] = OBSTACLE
-        field[-1][j] = OBSTACLE
-
-def jump_point_search(field, start_x, start_y, end_x, end_y):
+def jump_point_search(field, start_y, start_x, end_y, end_x):
     """
     Run a jump point search on a field with obstacles.
     
@@ -75,15 +49,11 @@ def jump_point_search(field, start_x, start_y, end_x, end_y):
     OR
     [] if no path is found. 
     """
-    global expanded, visited
-    if VISUAL:
-        expanded = [[False for j in range(len(field[0]))] for i in range(len(field))]  
-        visited = [[False for j in range(len(field[0]))] for i in range(len(field))]  
     
     # handle obvious exception cases: either start or end is unreachable
-    if field[start_x][start_y] == OBSTACLE:
+    if field[start_x][start_y] == BLOCK:
         raise ValueError("No path exists: the start node is not walkable")
-    if field[end_x][end_y] == OBSTACLE:
+    if field[end_x][end_y] == BLOCK:
         raise ValueError("No path exists: the end node is not walkable")
 
     class FoundPath(Exception):
@@ -123,27 +93,23 @@ def jump_point_search(field, start_x, start_y, end_x, end_y):
             current_y += directionY
             current_cost += 2**(1/2)
 
-            if field[current_x][current_y] == UNINITIALIZED:
+            if field[current_x][current_y] == BLANK:
                 field[current_x][current_y] = current_cost
                 sources[current_x][current_y] = startX, startY
-                if VISUAL:
-                    visited[current_x][current_y] = True
             elif current_x == end_x and current_y == end_y:  # destination found
                 field[current_x][current_y] = current_cost
                 sources[current_x][current_y] = startX, startY
-                if VISUAL:
-                    visited[current_x][current_y] = True
                 raise FoundPath()
             else: #collided with an obstacle. We are done. 
                 return None
 
             # If a jump point is found, 
-            if field[current_x + directionX][current_y] == OBSTACLE and field[current_x + directionX][current_y + directionY] != OBSTACLE:
+            if field[current_x + directionX][current_y] == BLOCK and field[current_x + directionX][current_y + directionY] != BLOCK:
                 return (current_x, current_y)
             else: #otherwise, extend a horizontal "tendril" to probe the field.
                 queue_jumppoint(_jps_explore_cardinal (current_x, current_y, directionX, 0))
 
-            if field[current_x][current_y + directionY] == OBSTACLE and field[current_x + directionX][current_y + directionY] != OBSTACLE:
+            if field[current_x][current_y + directionY] == BLOCK and field[current_x + directionX][current_y + directionY] != BLOCK:
                 return (current_x, current_y)
             else: #extend a vertical search to look for anything 
                 queue_jumppoint(_jps_explore_cardinal (current_x, current_y, 0, directionY))
@@ -159,46 +125,42 @@ def jump_point_search(field, start_x, start_y, end_x, end_y):
         None if no jumppoint was found.
         """
         current_x, current_y = startX, startY #indices of current cell. 
-        current_cost = field [startX] [startY]
+        current_cost = field[startX][startY]
 
         while (True):
             current_x += directionX
             current_y += directionY
             current_cost += 1
 
-            if field [current_x] [current_y] == UNINITIALIZED:
-                field [current_x][current_y] = current_cost
-                sources [current_x] [current_y] = startX, startY
-                if VISUAL:
-                    visited[current_x][current_y] = True  
+            if field[current_x][current_y] == BLANK:
+                field[current_x][current_y] = current_cost
+                sources[current_x][current_y] = startX, startY
             elif current_x == end_x and current_y == end_y:  # destination found
-                field [current_x][current_y] = current_cost
-                sources [current_x] [current_y] = startX, startY
-                if VISUAL:
-                    visited[current_x][current_y] = True
+                field[current_x][current_y] = current_cost
+                sources[current_x][current_y] = startX, startY
                 raise FoundPath()
             else: #collided with an obstacle or previously explored part. We are done. 
                 return None
 
             #check neighbouring cells, i.e. check if current_x, current_y is a jump point. 
             if directionX == 0: 
-                if field [current_x + 1] [current_y] == OBSTACLE and field [current_x + 1] [current_y + directionY] != OBSTACLE:
+                if field[current_x + 1][current_y] == BLOCK and field [current_x + 1][current_y + directionY] != BLOCK:
                     return current_x, current_y
-                if field [current_x - 1] [current_y] == OBSTACLE and field [current_x - 1] [current_y + directionY] != OBSTACLE:
+                if field [current_x - 1][current_y] == BLOCK and field [current_x - 1][current_y + directionY] != BLOCK:
                     return current_x, current_y
             elif directionY == 0:
-                if field [current_x] [current_y + 1] == OBSTACLE and field [current_x + directionX] [current_y + 1] != OBSTACLE:
+                if field [current_x][current_y + 1] == BLOCK and field [current_x + directionX][current_y + 1] != BLOCK:
                     return current_x, current_y
-                if field [current_x] [current_y - 1] == OBSTACLE and field [current_x + directionX] [current_y - 1] != OBSTACLE:
+                if field [current_x][current_y - 1] == BLOCK and field [current_x + directionX][current_y - 1] != BLOCK:
                     return current_x, current_y
 
     # MAIN JPS FUNCTION
-    field = [[j for j in i] for i in field]  # this takes less time than deep copying. 
+    field = [[j for j in i] for i in field]
 
-    # Initialize some arrays and certain elements. 
+    # Initialize some arrays and certain elements.
     sources = [[(None, None) for i in field[0]] for j in field]  # the jump-point predecessor to each point.
-    field [start_x] [start_y] = 0
-    field [end_x] [end_y] = DESTINATION
+    field[start_x][start_y] = START
+    field[end_x][end_y] = END
 
     pq = HeapTree()
     queue_jumppoint((start_x, start_y))
@@ -206,23 +168,22 @@ def jump_point_search(field, start_x, start_y, end_x, end_y):
     # Main loop: iterate through the queue
     while (not pq.empty()):
         pX, pY = pq.pop_task()
-
-        if VISUAL:
-            expanded[pX][pY] = True 
         
         try:
-            queue_jumppoint(_jps_explore_cardinal (pX, pY, 1, 0))
-            queue_jumppoint(_jps_explore_cardinal (pX, pY, -1, 0))
-            queue_jumppoint(_jps_explore_cardinal (pX, pY, 0, 1))
-            queue_jumppoint(_jps_explore_cardinal (pX, pY, 0, -1))
+            queue_jumppoint(_jps_explore_cardinal(pX, pY, 1, 0))
+            queue_jumppoint(_jps_explore_cardinal(pX, pY, -1, 0))
+            queue_jumppoint(_jps_explore_cardinal(pX, pY, 0, 1))
+            queue_jumppoint(_jps_explore_cardinal(pX, pY, 0, -1))
 
-            queue_jumppoint(_jps_explore_diagonal (pX, pY, 1, 1))
-            queue_jumppoint(_jps_explore_diagonal (pX, pY, 1, -1))
-            queue_jumppoint(_jps_explore_diagonal (pX, pY, -1, 1))
-            queue_jumppoint(_jps_explore_diagonal (pX, pY, -1, -1))
+            queue_jumppoint(_jps_explore_diagonal(pX, pY, 1, 1))
+            queue_jumppoint(_jps_explore_diagonal(pX, pY, 1, -1))
+            queue_jumppoint(_jps_explore_diagonal(pX, pY, -1, 1))
+            queue_jumppoint(_jps_explore_diagonal(pX, pY, -1, -1))
         except FoundPath:
+            print("FoundPath Exception")
             return _get_path(sources, start_x, start_y, end_x, end_y)
 
+    print("path: ", _get_path(sources, start_x, start_y, end_x, end_y))
     raise ValueError("No path is found")
     #end of jps
     
@@ -245,6 +206,9 @@ def _get_path(sources, start_x, start_y, end_x, end_y):
         result.append((current_x, current_y))
         current_x, current_y = sources[current_x][current_y]
     result.reverse()
+
+    print("Get Path: ", result)
+
     return [(start_x, start_y)] + result
 
 def _signum(n):
@@ -272,7 +236,7 @@ def get_full_path(path):
             result.append([current_x, current_y])
     return result
 
-def drawGrid (field):
+def showField(field):
     """
     Represent the field as a grid. Pretty much prints out the 2d array, but prints obstacles nicely.
     Parameters
@@ -280,19 +244,7 @@ def drawGrid (field):
     Return
     None
     """
-    print ("=======================================")
-    for i in field: 
-        for j in i:
-            if j == OBSTACLE:
-                print ("###", end=" ")
-            else:
-                print ("{:<3}".format(j), end=" ") 
-        print("")
 
-# Turn visual and debug modes on/ off
-def set_visual(val):
-    global VISUAL
-    VISUAL = val
-def set_debug(val):
-    global DEBUG
-    DEBUG = val    
+    print()
+    for i in field:
+        print(i)

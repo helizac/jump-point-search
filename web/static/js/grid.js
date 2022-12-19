@@ -11,11 +11,14 @@ for (var i = 0; i < gridArray.length; i++) {
 
 for (var i = 0; i < 12; i++) {
     for (var j = 0; j < 24; j++) {
-        gridArray[i][j] = -1;
+        gridArray[i][j] = 0;
     }
 }
 
-gridArray[9][21] = -2;
+gridArray[2][2] = 1
+gridArray[9][21] = 2;
+
+console.log(gridArray);
 
 let isBlankEditable, isBlockEditable = false;
 
@@ -26,19 +29,20 @@ function createGrid() {
     for (var y = 0; y < height; y++) {
         document.write("<tr>");
         for (var x = 0; x < width; x++) {
-            if(y == 2 && x == 2){
+            console.log(gridArray[y][x]);
+            if(gridArray[y][x] == 1){
                 document.write("<td class = 'start' id = " + y + "-" + x + "></td>");
             }
-            else if(gridArray[y][x] == -2){
-                document.write("<td class = 'destination' id = " + y + "-" + x + "></td>");
+            else if(gridArray[y][x] == 2){
+                document.write("<td class = 'end' id = " + y + "-" + x + "></td>");
             }
-            else if(gridArray[y][x] == -1){
+            else if(gridArray[y][x] == 0){
                 document.write("<td class = 'blank' id = " + y + "-" + x + "></td>");
             }
-            else if(gridArray[y][x] == -10){
+            else if(gridArray[y][x] == 8){
                 document.write("<td class = 'block' id = " + y + "-" + x + "></td>");
             }
-            else if(gridArray[y][x] == -5){
+            else if(gridArray[y][x] == 3){
                 document.write("<td class = 'path' id = " + y + "-" + x + "></td>");
             }
         }
@@ -57,7 +61,7 @@ function addBlankListener(elem){
                 isBlankEditable = true;
                 isBlockEditable = false;
                 elem.className = "block";
-                gridArray[elem.getAttribute("id").split("-")[0]][elem.getAttribute("id").split("-")[1]] = -10;
+                gridArray[elem.getAttribute("id").split("-")[0]][elem.getAttribute("id").split("-")[1]] = 8;
             }
         }
     }
@@ -66,7 +70,7 @@ function addBlankListener(elem){
         if(elem.className == "blank"){
             if(isBlankEditable){
                 elem.className = "block";
-                gridArray[elem.getAttribute("id").split("-")[0]][elem.getAttribute("id").split("-")[1]] = -10;
+                gridArray[elem.getAttribute("id").split("-")[0]][elem.getAttribute("id").split("-")[1]] = 8;
             }
         }
     }
@@ -91,7 +95,7 @@ function addBlockListener(elem){
                 isBlankEditable = false;
                 isBlockEditable = true;
                 elem.className = "blank";
-                gridArray[elem.getAttribute("id").split("-")[0]][elem.getAttribute("id").split("-")[1]] = -1;
+                gridArray[elem.getAttribute("id").split("-")[0]][elem.getAttribute("id").split("-")[1]] = 0;
             }
         }
     }
@@ -101,7 +105,7 @@ function addBlockListener(elem){
             if(isBlockEditable){
                 elem.className = "blank";
                 isBlockChanged = true;
-                gridArray[elem.getAttribute("id").split("-")[0]][elem.getAttribute("id").split("-")[1]] = -1;
+                gridArray[elem.getAttribute("id").split("-")[0]][elem.getAttribute("id").split("-")[1]] = 0;
             }
         }
     }
