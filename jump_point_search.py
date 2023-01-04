@@ -3,22 +3,23 @@ import itertools, heapq
 # c2huc2hu / jps
 # Define some constants representing the things that can be in a field.
 
-BLANK = 0
-START = 1
-END = 2
-PATH = 3
+START = -1
+END = -2
 
-BLOCK = 8
+PATH = -5
+
+BLANK = -7
+BLOCK = -8
 
 DEBUG = False  
 VISUAL = True
-expanded = [[False for j in range(24)] for i in range(12)]  
-visited = [[False for j in range(24)] for i in range(12)]
+expanded = [[False for j in range(26)] for i in range(14)]  
+visited = [[False for j in range(26)] for i in range(14)]
 
 class HeapTree():
     def __init__(self):
-        self.pq = []                         # list of entries arranged in a heap
-        self.counter = itertools.count()     # unique sequence count
+        self.pq = []
+        self.counter = itertools.count()
 
     def add_task(self, task, priority=0):
         'Add a new task'
@@ -207,8 +208,6 @@ def _get_path(sources, start_x, start_y, end_x, end_y):
         current_x, current_y = sources[current_x][current_y]
     result.reverse()
 
-    print("Get Path: ", result)
-
     return [(start_x, start_y)] + result
 
 def _signum(n):
@@ -234,6 +233,8 @@ def get_full_path(path):
             current_x += _signum(path[i + 1][0] - path[i][0])
             current_y += _signum(path[i + 1][1] - path[i][1])
             result.append([current_x, current_y])
+
+    print(result)
     return result
 
 def showField(field):
@@ -248,3 +249,25 @@ def showField(field):
     print()
     for i in field:
         print(i)
+
+def create_empty_grid(x, y):
+    grid = [[BLOCK for i in range(x)] if (j == 0 or j == y-1) else [BLOCK if (i == 0 or i == x-1) else BLANK for i in range(x)] for j in range(y)]
+    grid[3][3] = START
+    grid[-4][-4] = END
+    return grid
+
+
+def get_grid_info_and_solve(grid):
+
+    x_field = grid
+
+    try:
+        print("===== SHOWING FIELD =====")
+        showField(x_field)
+    except Exception as e:
+        print(e)
+        
+    path = jump_point_search(x_field, 3, 3, 22, 11)
+    path = get_full_path(path)
+
+    return x_field

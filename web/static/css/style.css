@@ -57,7 +57,7 @@ p{
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    margin-bottom: 120px;
+    margin-bottom: 60px;
 }
 
 .grid-area{
@@ -147,4 +147,30 @@ p{
     -moz-user-select: none;
     -webkit-user-select: none;
     -ms-user-select: none;
+}
+
+
+@-webkit-keyframes mushroom-walk{
+    0%{
+        left: -144px;
+    }
+    100%{
+        left: calc(100% + 144px);
+    }
+}
+
+@-webkit-keyframes mario-walk{
+    0%{
+        left: -44px;
+    }
+
+    100%{
+        left: calc(100% + 224px);
+    }
+}
+
+@-webkit-keyframes mushroom-walk-after{
+    100%{
+        left: calc(100% + 144px);
+    }
 }
