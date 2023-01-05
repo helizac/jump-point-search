@@ -110,11 +110,24 @@ in the first iteration algorithm couldn't find the red point, so it jumps to the
 
 <h2 id="results">Results</h2>
 
+When we run the whole program and click to "Find Route" we can obtain the results of the Jump Point Search Algorithm.
 
 |     |     |     |     |     |     |     |     |     |
 |:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
 |||||<video src="https://user-images.githubusercontent.com/54884571/210867028-430cd3c7-02f1-441a-b499-58de2fcd4b7f.mp4" frameborder="0" allowfullscreen="true"></video>|||||
 
-
-
 <h2 id="conclusion">Conclusion</h2>
+
+Jump point search is often used in video games and robotics applications where there is a need to find a shortest path through a grid-based environment. In these cases, JPS can be used to quickly and efficiently find a path through the grid while avoiding obstacles.
+
+JPS is also used in other applications where there is a need to find a shortest path through a graph with many possible paths, such as in transportation and logistics planning. In these cases, the algorithm can be used to find the most efficient route for a delivery truck or other vehicle to take, taking into account factors such as traffic conditions and road network structure.
+
+Overall, JPS is a useful algorithm for finding a shortest path through a graph when the graph is large or when there are many possible paths that need to be considered. Its efficiency makes it well-suited for use in a variety of applications where pathfinding is important.
+
+<h2 id="References">References</h2>
+
+Special thanks to Daniel Harabor and Alban Grastien whom introduces the JPS algorithm formally and serves as an excellent reference when implementing the algorithm for yourself.
+Also thanks to Nathan Witmer who implemented this algorithm on a very explanatory and inspiring site
+
+[1] https://users.cecs.anu.edu.au/~dharabor/data/papers/harabor-grastien-icaps14.pdf
+[2] https://zerowidth.com/2013/a-visual-explanation-of-jump-point-search.html
