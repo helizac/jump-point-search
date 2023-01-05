@@ -121,9 +121,7 @@ in the first iteration algorithm couldn't find the red point, so it jumps to the
 
 When we run the whole program and click to "Find Route" we can obtain the results of the Jump Point Search Algorithm.
 
-|     |     |     |     |     |     |     |     |     |
-|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
-|||||<video src="https://user-images.githubusercontent.com/54884571/210867028-430cd3c7-02f1-441a-b499-58de2fcd4b7f.mp4" frameborder="0" allowfullscreen="true"></video>|||||
+<video src="https://user-images.githubusercontent.com/54884571/210867028-430cd3c7-02f1-441a-b499-58de2fcd4b7f.mp4" frameborder="0" allowfullscreen="true"></video>
 
 <h2 id="conclusion">Conclusion</h2>
 
