@@ -2,7 +2,7 @@
 
 This repository is a Python implementation of Jump Point Search Algorithm on Flask website.
 
-<a font-size=".5em">Note: For this repository, Jump Point Search Algorithm is implemented in a corner pass-through version. And taken advancing each unit costs 1, advancing diagonals costs 2^(1/2).</a>
+<a style="font-size: 1em;">Note: For this repository, Jump Point Search Algorithm is implemented in a corner pass-through version. And taken advancing each unit costs 1, advancing diagonals costs 2^(1/2).</a>
 
 <div align="center">
     <img src="https://user-images.githubusercontent.com/54884571/210841925-b975b88a-8177-4aa4-b7e1-6457aeb13480.gif" height="56"/>
