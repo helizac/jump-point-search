@@ -2,6 +2,9 @@
 
 This is a Python implementation of Jump Point Search Algorithm on Flask website. You can try out by running main.py
 
+![mushroom](https://user-images.githubusercontent.com/54884571/210841925-b975b88a-8177-4aa4-b7e1-6457aeb13480.gif)
+![mario](https://user-images.githubusercontent.com/54884571/210841922-639ff133-9123-4eef-a38c-3cc7f6f844f5.gif)
+
 ### Contents
 
 ```
