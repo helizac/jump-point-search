@@ -1,6 +1,6 @@
 # Jump Point Search Implementation
 
-This is a Python implementation of Jump Point Search Algorithm on Flask website. You can try out by running main.py
+This repository is a Python implementation of Jump Point Search Algorithm on Flask website. You can try out by running main.py
 
 <div align="center">
     <img src="https://user-images.githubusercontent.com/54884571/210841925-b975b88a-8177-4aa4-b7e1-6457aeb13480.gif" height="56"/>
@@ -19,12 +19,13 @@ This is a Python implementation of Jump Point Search Algorithm on Flask website.
 </div>
 
 <h3 id="introduction">Introduction</h3>
+
+#### What's Jump Point Search Algorithm?
+
+Jump point search (JPS) is a pathfinding algorithm for graphs that is an optimization of the A* search algorithm. It is designed to efficiently find a shortest path between two points in a graph that has many more possible paths than just the straight line distance between the two points. The algorithm works by "jumping" over nodes in the graph that are unlikely to be on the optimal path, using pre-computed "jump points" to quickly move closer to the goal. This can greatly reduce the number of nodes that need to be evaluated, making the search much faster than a standard A* search. JPS is particularly well-suited for use in grid-based graphs, such as those used in many video games and robotics applications.
+
+Jump Point Search Algorithm is very efficient especially in dungeon games or the areas with many obstacles. That's why I used an dungeon theme in the website. For the sake of the mushroom characters who have been crushed for years, a powerful mushroom is chasing Mario on the website. With the JPS algorithm, Mario can escape from the mushroom.
+
 <h3 id="project-architecture">Project Architecture</h3>
 <h3 id="results">Results</h3>
 <h3 id="conclusion">Conclusion</h3>
-
-
-1 - Introduction
-2 - Project Architecture
-3 - Results
-4 - Conclusion
