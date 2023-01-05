@@ -109,4 +109,11 @@ in the first iteration algorithm couldn't find the red point, so it jumps to the
 <div align="center"><img src="https://user-images.githubusercontent.com/54884571/210863842-a0d3c691-33b0-47dd-9cbf-7d41b45f537a.png" width ="50%"></div>
 
 <h2 id="results">Results</h2>
+
+<div align="center">
+    <video width="50%" controls>
+      <source src="https://user-images.githubusercontent.com/54884571/210867028-430cd3c7-02f1-441a-b499-58de2fcd4b7f.mp4" type="video/mp4">
+    </video>
+</div>
+
 <h2 id="conclusion">Conclusion</h2>
