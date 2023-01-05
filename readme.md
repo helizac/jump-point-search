@@ -138,7 +138,9 @@ Overall, JPS is a useful algorithm for finding a shortest path through a graph w
 
 Special thanks to Daniel Harabor and Alban Grastien whom introduces the JPS algorithm formally and serves as an excellent reference when implementing the algorithm for yourself.
 
-Also thanks to Nathan Witmer who implemented this algorithm on a very explanatory and inspiring site
+Also thanks to Nathan Witmer who implemented this algorithm on a very explanatory and inspiring site.
+
+Finally thanks to my close friend for design ideas.
 
 [1] https://users.cecs.anu.edu.au/~dharabor/data/papers/harabor-grastien-icaps14.pdf
 
