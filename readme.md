@@ -4,6 +4,8 @@ This repository is a Python implementation of Jump Point Search Algorithm on Fla
 
 <sub>Note: For this repository, Jump Point Search Algorithm is implemented in a corner pass-through version. And taken advancing each unit costs 1, advancing diagonals costs 2^(1/2).</sub>
 
+<br>
+
 <div align="center">
     <img src="https://user-images.githubusercontent.com/54884571/210841925-b975b88a-8177-4aa4-b7e1-6457aeb13480.gif" height="56"/>
     <img src="https://user-images.githubusercontent.com/54884571/210841922-639ff133-9123-4eef-a38c-3cc7f6f844f5.gif" height="40"/>
@@ -16,7 +18,8 @@ This repository is a Python implementation of Jump Point Search Algorithm on Fla
         <li><a href="#introduction">Introduction</a></li>
         <li><a href="#project-architecture">Project Architecture</a></li>
         <li><a href="#results">Results</a></li>
-        <li><a href="#conclusion">Conclusion and Future Work</a></li>
+        <li><a href="#conclusion">Conclusion</a></li>
+        <li><a href="#references">References</a></li>
     </ul>
 </div>
 
@@ -126,7 +129,7 @@ JPS is also used in other applications where there is a need to find a shortest 
 
 Overall, JPS is a useful algorithm for finding a shortest path through a graph when the graph is large or when there are many possible paths that need to be considered. Its efficiency makes it well-suited for use in a variety of applications where pathfinding is important.
 
-<h2 id="References">References</h2>
+<h2 id="references">References</h2>
 
 Special thanks to Daniel Harabor and Alban Grastien whom introduces the JPS algorithm formally and serves as an excellent reference when implementing the algorithm for yourself.
 Also thanks to Nathan Witmer who implemented this algorithm on a very explanatory and inspiring site
