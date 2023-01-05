@@ -18,7 +18,7 @@ This repository is a corner pass-through Python implementation of Jump Point Sea
     </ul>
 </div>
 
-<h2 id="introduction">Introduction</h3>
+<h2 id="introduction">Introduction</h2>
 
 Jump Point Search Algorithm is very efficient especially in dungeon games or the areas with many obstacles. That's why I used an dungeon theme in the website. For the sake of the mushroom characters who have been crushed for years, a powerful mushroom is chasing Mario on the website. With the JPS algorithm, Mario can escape from the mushroom.
 
@@ -26,7 +26,7 @@ Jump Point Search Algorithm is very efficient especially in dungeon games or the
 
 Jump point search (JPS) is a pathfinding algorithm for graphs that is an optimization of the A* search algorithm. It is designed to efficiently find a shortest path between two points in a graph that has many more possible paths than just the straight line distance between the two points. The algorithm works by "jumping" over nodes in the graph that are unlikely to be on the optimal path, using pre-computed "jump points" to quickly move closer to the goal. This can greatly reduce the number of nodes that need to be evaluated, making the search much faster than a standard A* search. JPS is particularly well-suited for use in grid-based graphs, such as those used in many video games and robotics applications.
 
-<h2 id="project-architecture">Project Architecture</h3>
+<h2 id="project-architecture">Project Architecture</h2>
 
 ```
 - .github
@@ -58,5 +58,29 @@ Jump point search (JPS) is a pathfinding algorithm for graphs that is an optimiz
 + readme.md
 ```
 
-<h2 id="results">Results</h3>
-<h2 id="conclusion">Conclusion</h3>
+For this project there are just two libraries that need to be installed in the terminal. Use pip3 or pip for install packages.
+
+To simply install libraries type after open the cmd in jump-point-search file ->
+```
+pip install -r requirements.txt
+```
+
+and that will install immediatly ->
+```
+Flask==2.2.2
+numpy==1.23.5
+```
+
+After that type ->
+```
+python main.py
+```
+
+And voilà. A link will open in your browser. ( If not, ctrl+click on the url. )
+
+<h2 id="jps">Detailed Jump Point Search Algoritm Close Look</h2>
+
+
+
+<h2 id="results">Results</h2>
+<h2 id="conclusion">Conclusion</h2>
