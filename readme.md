@@ -10,10 +10,12 @@ This is a Python implementation of Jump Point Search Algorithm on Flask website.
 ### Contents
 
 <div>
-    <a href="#introduction">Introduction</a>
-    <a href="#project-architecture">Project Architecture</a>
-    <a href="#results">Results</a>
-    <a href="#conclusion">Conclusion and Future Work</a>
+    <ul>
+        <li><a href="#introduction">Introduction</a></li>
+        <li><a href="#project-architecture">Project Architecture</a></li>
+        <li><a href="#results">Results</a></li>
+        <li><a href="#conclusion">Conclusion and Future Work</a></li>
+    </ul>
 </div>
 
 <h3 id="introduction">Introduction</h3>
