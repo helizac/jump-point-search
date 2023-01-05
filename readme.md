@@ -28,5 +28,35 @@ Jump Point Search Algorithm is very efficient especially in dungeon games or the
 
 <h2 id="project-architecture">Project Architecture</h3>
 
+```
+- .github
+    - workflow
+        + static.yml # To display static page in Github
+- web
+    - static
+        - css
+            + style.css # contains some style file for home.html ( also has animations inside )
+        - js 
+            + grid.js # creates grids and handle grid events. Also handles animations.
+            + lottie.js # a simple lottie integration file for easy use. 
+        - lottie
+            + animation1.gif
+            + fireworks.json
+            + mario.gif
+            + mushroom.gif
+            + paper.json
+            + tile.png
+    - templates
+        + home.html # main page ( also sends data to back-end and takes the grid answer after jump-point-search ) 
+    + __init__.py # handles Flask and config properties
+    + routes.py # basic Flask routing page that contact with front-end to find the path.
++ .gitattributes
++ .gitignore
++ LICENSE
++ jump_point_search.py # Jump Point Search implementation file
++ main.py # main file to run all the codes above
++ readme.md
+```
+
 <h2 id="results">Results</h3>
 <h2 id="conclusion">Conclusion</h3>
