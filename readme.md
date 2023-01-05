@@ -11,16 +11,18 @@ This is a Python implementation of Jump Point Search Algorithm on Flask website.
 
 <div>
     <a href="#introduction">Introduction</a>
-    <a></a>
-    <a></a>
-    <a></a>
+    <a href="#project-architecture">Project Architecture</a>
+    <a href="#results">Results</a>
+    <a href="#conclusion">Conclusion and Future Work</a>
 </div>
 
 <h3 id="introduction">Introduction</h3>
+<h3 id="project-architecture">Project Architecture</h3>
+<h3 id="results">Results</h3>
+<h3 id="conclusion">Conclusion</h3>
 
 
 1 - Introduction
 2 - Project Architecture
 3 - Results
-4 - Conclusion and Future Work
-```
+4 - Conclusion
