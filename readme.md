@@ -1,5 +1,4 @@
 # Jump Point Search
----
 
 Contents
 
