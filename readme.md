@@ -7,7 +7,7 @@ This repository is a Python implementation of Jump Point Search Algorithm on Fla
 <br>
 
 <div align="center">
-    <img src="https://user-images.githubusercontent.com/54884571/210880149-a23a7278-9135-40b9-bf35-9be3d11e12b8.gif" height="56" border="2"/>
+    <img src="https://user-images.githubusercontent.com/54884571/210881047-0e17d0cb-9606-45c3-ade8-9e6bf3408ff9.gif" height="56" border="2"/>
 </div>
 
 ## Contents
