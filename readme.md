@@ -17,6 +17,7 @@ This repository is a Python implementation of Jump Point Search Algorithm on Fla
     <ul>
         <li><a href="#introduction">Introduction</a></li>
         <li><a href="#project-architecture">Project Architecture</a></li>
+        <li><a href="jps">Detailed Jump Point Search Algoritm</a></li>
         <li><a href="#results">Results</a></li>
         <li><a href="#conclusion">Conclusion</a></li>
         <li><a href="#references">References</a></li>
@@ -83,7 +84,7 @@ python main.py
 
 And voilà. A link will open in your browser. ( If not, ctrl+click on the url. )
 
-<h2 id="jps">Detailed Jump Point Search Algoritm Close Look</h2>
+<h2 id="jps">Detailed Jump Point Search Algoritm</h2>
 
 The algorithm starts at the starting node and adds it to the open list. The open list is a list of nodes that are being considered for expansion. It repeats the following steps until the open list is empty.
 
@@ -91,9 +92,13 @@ The algorithm starts at the starting node and adds it to the open list. The open
 2) If the node is the goal, the algorithm returns the path from the starting node to the goal.
 3) If the node is not the goal, the algorithm expands it by generating its successors. A successor is a node that can be reached from the current node in one step.
 4) For each successor, the algorithm does the following:
+
     a) If the successor is the goal, the algorithm returns the path from the starting node to the goal.
+    
     b) If the successor is not in the open list or closed list, the algorithm adds it to the open list and sets its parent to the current node. The closed list is a list of nodes that have already been expanded.
+    
     c) If the successor is in the open list, the algorithm checks if the current path to the successor is better than the previous path. If it is, the algorithm updates the successor's parent to the current node.
+    
 5) The algorithm adds the current node to the closed list.
 
 #### Example
