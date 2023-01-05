@@ -135,4 +135,5 @@ Special thanks to Daniel Harabor and Alban Grastien whom introduces the JPS algo
 Also thanks to Nathan Witmer who implemented this algorithm on a very explanatory and inspiring site
 
 [1] https://users.cecs.anu.edu.au/~dharabor/data/papers/harabor-grastien-icaps14.pdf
+
 [2] https://zerowidth.com/2013/a-visual-explanation-of-jump-point-search.html
