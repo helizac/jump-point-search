@@ -80,7 +80,32 @@ And voilà. A link will open in your browser. ( If not, ctrl+click on the url. )
 
 <h2 id="jps">Detailed Jump Point Search Algoritm Close Look</h2>
 
+The algorithm starts at the starting node and adds it to the open list. The open list is a list of nodes that are being considered for expansion. It repeats the following steps until the open list is empty.
 
+1) The algorithm gets the node with the lowest cost (F value) from the open list. The F value is an estimate of the cost to reach the goal from a given node, using the Manhattan distance heuristic.
+2) If the node is the goal, the algorithm returns the path from the starting node to the goal.
+3) If the node is not the goal, the algorithm expands it by generating its successors. A successor is a node that can be reached from the current node in one step.
+4) For each successor, the algorithm does the following:
+    a) If the successor is the goal, the algorithm returns the path from the starting node to the goal.
+    b) If the successor is not in the open list or closed list, the algorithm adds it to the open list and sets its parent to the current node. The closed list is a list of nodes that have already been expanded.
+    c) If the successor is in the open list, the algorithm checks if the current path to the successor is better than the previous path. If it is, the algorithm updates the successor's parent to the current node.
+5) The algorithm adds the current node to the closed list.
+
+#### Example
+
+Let's assume that we have an green start point and we want to reach to the red point.
+
+At this point algorithm starts to search and we obtain: from green point, we search 8 direction ( top, bottom, left, right, top left, top right, bottom left, bottom right ) and for each direction, if the direction is diagonal, it scans vertical and horizontal space in its direction like below.
+
+Then the shortest path is returned.
+
+![image](https://user-images.githubusercontent.com/54884571/210862898-bee6061a-aac5-43ba-b1ea-2a0894630f02.png)
+
+For an another example with an obstacle,
+
+in the first iteration algorithm couldn't find the red point, so it jumps to the corner which is the closest corner to reach point and continue to search again. Remember that in this implementation, advancing each unit costs 1, advancing diagonals costs 2^(1/2).
+
+![image](https://user-images.githubusercontent.com/54884571/210863842-a0d3c691-33b0-47dd-9cbf-7d41b45f537a.png)
 
 <h2 id="results">Results</h2>
 <h2 id="conclusion">Conclusion</h2>
