@@ -1,6 +1,8 @@
-# Jump Point Search
+# Jump Point Search Implementation
 
-Contents
+This is a Python implementation of Jump Point Search Algorithm on Flask website. You can try out by running main.py
+
+### Contents
 
 ```
 1 - Introduction
