@@ -99,13 +99,14 @@ At this point algorithm starts to search and we obtain: from green point, we sea
 
 Then the shortest path is returned.
 
-![image](https://user-images.githubusercontent.com/54884571/210862898-bee6061a-aac5-43ba-b1ea-2a0894630f02.png)
+<img src="https://user-images.githubusercontent.com/54884571/210862898-bee6061a-aac5-43ba-b1ea-2a0894630f02.png" width ="50%">
 
 For an another example with an obstacle,
 
 in the first iteration algorithm couldn't find the red point, so it jumps to the corner which is the closest corner to reach point and continue to search again. Remember that in this implementation, advancing each unit costs 1, advancing diagonals costs 2^(1/2).
 
-![image](https://user-images.githubusercontent.com/54884571/210863842-a0d3c691-33b0-47dd-9cbf-7d41b45f537a.png)
+
+<img src="https://user-images.githubusercontent.com/54884571/210863842-a0d3c691-33b0-47dd-9cbf-7d41b45f537a.png" width ="50%">
 
 <h2 id="results">Results</h2>
 <h2 id="conclusion">Conclusion</h2>
