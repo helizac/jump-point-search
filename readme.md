@@ -140,7 +140,7 @@ Special thanks to Daniel Harabor and Alban Grastien whom introduces the JPS algo
 
 Also thanks to Nathan Witmer who implemented this algorithm on a very explanatory and inspiring site.
 
-Finally thanks to my close friend for design ideas.
+Finally thanks to my best friend for design ideas.
 
 [1] https://users.cecs.anu.edu.au/~dharabor/data/papers/harabor-grastien-icaps14.pdf
 
