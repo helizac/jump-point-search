@@ -111,8 +111,8 @@ in the first iteration algorithm couldn't find the red point, so it jumps to the
 <h2 id="results">Results</h2>
 
 
-|     |     |     |     |     |     |     |     |     |
-|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
+|     |     |     |     |     |     |     |     |     |     |     |
+|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
 ||||||<video src="https://user-images.githubusercontent.com/54884571/210867028-430cd3c7-02f1-441a-b499-58de2fcd4b7f.mp4" frameborder="0" allowfullscreen="true"></video>||||||
 
 
