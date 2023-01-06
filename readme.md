@@ -15,14 +15,14 @@ Note: For this repository, Jump Point Search Algorithm is implemented in a corne
 ## Contents
 
 <div>
-    <ul>
+    <ol>
         <li><a href="#introduction">Introduction</a></li>
         <li><a href="#project-architecture">Project Architecture</a></li>
         <li><a href="jps">Detailed Jump Point Search Algoritm</a></li>
         <li><a href="#results">Results</a></li>
         <li><a href="#conclusion">Conclusion</a></li>
         <li><a href="#references">References</a></li>
-    </ul>
+    </ol>
 </div>
 
 <h2 id="introduction">Introduction</h2>
