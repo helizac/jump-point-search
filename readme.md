@@ -91,7 +91,6 @@ The algorithm starts at the starting node and adds it to the open list. The open
 
 So first of all we need to create a Heap Tree to JPS implementation
 
-Python Implementation
 ```python3
 class HeapTree():
     def __init__(self):
@@ -129,14 +128,14 @@ def jump_point_search(field, start_y, start_x, end_y, end_x):
 
 2) If the node is the goal, the algorithm returns the path from the starting node to the goal.
 
-Python Implementation ```python3
+```python3
     class FoundPath(Exception):
         pass
 ```
 
 3) If the node is not the goal, the algorithm expands it by generating its successors. A successor is a node that can be reached from the current node in one step.
 
-Python Implementation ```python3
+```python3
     while (True):
         current_x += directionX
         current_y += directionY
@@ -166,7 +165,7 @@ Python Implementation ```python3
 
 5) The algorithm adds the current node to the closed list.
 
-Python Implementation ```python3
+```python3
 while (not pq.empty()):
     pX, pY = pq.pop_task()
 
