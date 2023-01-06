@@ -91,7 +91,8 @@ The algorithm starts at the starting node and adds it to the open list. The open
 
 So first of all we need to create a Heap Tree to JPS implementation
 
-Python Implementation ```python3
+Python Implementation
+```python3
 class HeapTree():
     def __init__(self):
         self.pq = []
