@@ -88,8 +88,73 @@ And voilà. A link will open in your browser. ( If not, ctrl+click on the url. )
 The algorithm starts at the starting node and adds it to the open list. The open list is a list of nodes that are being considered for expansion. It repeats the following steps until the open list is empty.
 
 1) The algorithm gets the node with the lowest cost (F value) from the open list. The F value is an estimate of the cost to reach the goal from a given node, using the Manhattan distance heuristic.
+
+So first of all we need to create a Heap Tree to JPS implementation
+
+Python Implementation ```python3
+class HeapTree():
+    def __init__(self):
+        self.pq = []
+        self.counter = itertools.count()
+
+    def add_task(self, task, priority=0):
+        'Add a new task'
+        count = next(self.counter)
+        entry = [priority, count, task]
+        heapq.heappush(self.pq, entry)
+
+    def pop_task(self):
+        'Remove and return the lowest priority task. Raise KeyError if empty.'
+        while self.pq:
+            priority, count, task = heapq.heappop(self.pq)
+            return task
+        raise KeyError('pop from an empty priority queue')
+
+    def empty(self):
+        return len(self.pq) == 0
+        
+        .
+        .
+        .
+        
+def jump_point_search(field, start_y, start_x, end_y, end_x):
+    .
+    .
+    .
+        def queue_jumppoint(node):
+            if node is not None:
+                pq.add_task (node, field [node[0]] [node[1]] + max(abs(node[0] - end_x), abs(node[1] - end_y)))
+```
+
 2) If the node is the goal, the algorithm returns the path from the starting node to the goal.
+
+Python Implementation ```python3
+    class FoundPath(Exception):
+        pass
+```
+
 3) If the node is not the goal, the algorithm expands it by generating its successors. A successor is a node that can be reached from the current node in one step.
+
+Python Implementation ```python3
+    while (True):
+        current_x += directionX
+        current_y += directionY
+        current_cost += 2**(1/2)
+
+        if field[current_x][current_y] == BLANK:
+            field[current_x][current_y] = current_cost
+            sources[current_x][current_y] = startX, startY
+        elif current_x == end_x and current_y == end_y:  # destination found
+            field[current_x][current_y] = current_cost
+            sources[current_x][current_y] = startX, startY
+            raise FoundPath()
+        else: #collided with an obstacle. We are done. 
+            return None
+    .
+    .
+    .
+```
+
 4) For each successor, the algorithm does the following:
 
     a) If the successor is the goal, the algorithm returns the path from the starting node to the goal.
@@ -97,8 +162,27 @@ The algorithm starts at the starting node and adds it to the open list. The open
     b) If the successor is not in the open list or closed list, the algorithm adds it to the open list and sets its parent to the current node. The closed list is a list of nodes that have already been expanded.
     
     c) If the successor is in the open list, the algorithm checks if the current path to the successor is better than the previous path. If it is, the algorithm updates the successor's parent to the current node.
-    
+
 5) The algorithm adds the current node to the closed list.
+
+Python Implementation ```python3
+while (not pq.empty()):
+    pX, pY = pq.pop_task()
+
+    try:
+        queue_jumppoint(_jps_explore_cardinal(pX, pY, 1, 0))
+        queue_jumppoint(_jps_explore_cardinal(pX, pY, -1, 0))
+        queue_jumppoint(_jps_explore_cardinal(pX, pY, 0, 1))
+        queue_jumppoint(_jps_explore_cardinal(pX, pY, 0, -1))
+
+        queue_jumppoint(_jps_explore_diagonal(pX, pY, 1, 1))
+        queue_jumppoint(_jps_explore_diagonal(pX, pY, 1, -1))
+        queue_jumppoint(_jps_explore_diagonal(pX, pY, -1, 1))
+        queue_jumppoint(_jps_explore_diagonal(pX, pY, -1, -1))
+    except FoundPath:
+        print("FoundPath Exception")
+        return _get_path(sources, start_x, start_y, end_x, end_y)
+```
 
 #### Example
 
