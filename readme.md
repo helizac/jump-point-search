@@ -2,9 +2,9 @@
 
 This repository is a Python implementation of Jump Point Search Algorithm on Flask website.
 
-<sub>Note: For this repository, Jump Point Search Algorithm is implemented in a corner pass-through version. And taken advancing each unit costs 1, advancing diagonals costs 2^(1/2).</sub>
+Note: For this repository, Jump Point Search Algorithm is implemented in a corner pass-through version. And taken advancing each unit costs 1, advancing diagonals costs 2^(1/2).
 
-<sub><sub>Super Mario was chosen as the repository theme, as the jps algorithm generally works very efficiently in dungeons or areas with many obstacles.</sub></sub>
+<sub>Super Mario was chosen as the repository theme, as the jps algorithm generally works very efficiently in dungeons or areas with many obstacles.</sub>
 
 <br>
 
