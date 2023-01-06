@@ -184,6 +184,10 @@ while (not pq.empty()):
         return _get_path(sources, start_x, start_y, end_x, end_y)
 ```
 
+```
+Pour toute implémentation, veuillez vérifier tout le code dans jump_point_search.py
+```
+
 #### Exemples
 
 Supposons que nous ayons un point de départ vert et que nous voulions atteindre le point rouge.
