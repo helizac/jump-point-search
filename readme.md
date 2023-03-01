@@ -1,6 +1,6 @@
-# Jump Point Search Implementation
+# Jump Point Search Improvement
 
-This repository is a Python implementation of Jump Point Search Algorithm on Flask website.
+This repository is a Python implementation and improvement of Jump Point Search Algorithm on Flask website.
 
 Note: For this repository, Jump Point Search Algorithm is implemented in a corner pass-through version. And taken advancing each unit costs 1, advancing diagonals costs 2^(1/2).
 
